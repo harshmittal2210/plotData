@@ -15,6 +15,8 @@ public:
     plotData(QWidget *parent = nullptr);
     ~plotData();
 
+public slots:
+    void makePlot();
 private:
     Ui::plotData *ui;
 };
