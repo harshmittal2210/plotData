@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui printsupport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -10,10 +10,12 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
-    plotdata.cpp
+    plotdata.cpp \
+    qcustomplot.cpp
 
 HEADERS += \
-    plotdata.h
+    plotdata.h \
+    qcustomplot.h
 
 FORMS += \
     plotdata.ui
