@@ -15,6 +15,16 @@ public:
     plotFile(QWidget *parent = nullptr);
     ~plotFile();
 
+public slots:
+    void clearPlot();
+    void makePlot();
+private slots:
+    void on_plotButton_clicked();
+
+    void on_clearButton_clicked();
+
+    void on_fileOpenButton_clicked();
+
 private:
     Ui::plotFile *ui;
 };
