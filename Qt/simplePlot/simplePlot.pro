@@ -17,6 +17,7 @@ HEADERS += \
     plotdata.h \
     qcustomplot.h
 
+
 FORMS += \
     plotdata.ui
 
