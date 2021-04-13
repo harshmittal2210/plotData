@@ -17,6 +17,12 @@ public:
 
 public slots:
     void makePlot();
+    void clearPlot();
+private slots:
+    void on_plotButton_clicked();
+
+    void on_clearButton_clicked();
+
 private:
     Ui::plotData *ui;
 };

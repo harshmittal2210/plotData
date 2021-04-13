@@ -6,7 +6,7 @@ plotData::plotData(QWidget *parent)
     , ui(new Ui::plotData)
 {
     ui->setupUi(this);
-    makePlot();
+
 }
 
 plotData::~plotData()
@@ -32,4 +32,19 @@ void plotData::makePlot(){
     ui->customPlot->xAxis->setRange(-1, 1);
     ui->customPlot->yAxis->setRange(0, 1);
     ui->customPlot->replot();
+}
+
+void plotData::clearPlot(){
+    ui->customPlot->graph(0)->data()->clear();
+    ui->customPlot->replot();
+    ui->customPlot->update();
+}
+void plotData::on_plotButton_clicked()
+{
+    makePlot();
+}
+
+void plotData::on_clearButton_clicked()
+{
+    clearPlot();
 }
