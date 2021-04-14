@@ -18,6 +18,7 @@ public:
 public slots:
     void clearPlot();
     void makePlot();
+    void initFile();
 private slots:
     void on_plotButton_clicked();
 
@@ -27,5 +28,6 @@ private slots:
 
 private:
     Ui::plotFile *ui;
+    QString fileName;
 };
 #endif // PLOTFILE_H

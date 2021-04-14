@@ -48,6 +48,7 @@ void plotFile::clearPlot(){
 
 void plotFile::on_plotButton_clicked()
 {
+
     makePlot();
 }
 
@@ -56,10 +57,12 @@ void plotFile::on_clearButton_clicked()
     clearPlot();
 }
 
+void plotFile::initFile(){
 
+}
 void plotFile::on_fileOpenButton_clicked()
 {
-    QString fileName = QFileDialog::getOpenFileName(
+    fileName = QFileDialog::getOpenFileName(
                 this,
                 tr("Open File"),
                 "./",
@@ -67,5 +70,6 @@ void plotFile::on_fileOpenButton_clicked()
                 );
 
 
-    QMessageBox::information(this,tr("File Name"),fileName);
+//    QMessageBox::information(this,tr("File Name"),fileName);
+    ui->fileTextEdit->setText(fileName);
 }
