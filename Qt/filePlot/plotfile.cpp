@@ -60,7 +60,13 @@ void plotFile::clearPlot(){
 void plotFile::on_plotButton_clicked()
 {
 
-    makePlot();
+    if(fileName.isEmpty()){
+        this->statusBar()->showMessage("Select a file first!!!");
+    }
+    else{
+        makePlot();
+    }
+
 }
 
 void plotFile::on_clearButton_clicked()
