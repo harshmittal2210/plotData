@@ -28,7 +28,7 @@ plotFile::~plotFile()
 
 void plotFile::makePlot(){
 
-    int num = 761;
+    int num = ui->windowSizeSpinBox->value();
     static int count = 0;
     if(num+count<=x_cor.size()){
         QVector<double> x(num), y(num); // initialize with entries 0..100
