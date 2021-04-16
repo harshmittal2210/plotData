@@ -31,5 +31,7 @@ private:
     Ui::plotFile *ui;
     QString fileName;
     QVector<double> x_cor,y_cor;
+    bool stopPlotting;
+    int frameCount;
 };
 #endif // PLOTFILE_H

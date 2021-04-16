@@ -19,6 +19,7 @@ plotFile::plotFile(QWidget *parent)
     ui->customPlot->xAxis->setRange(-6000, 100);
     ui->customPlot->yAxis->setRange(-6000, 8000);
     ui->customPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectPlottables);
+    frameCount=0;
 }
 
 plotFile::~plotFile()
@@ -29,16 +30,16 @@ plotFile::~plotFile()
 void plotFile::makePlot(){
 
     int num = ui->windowSizeSpinBox->value();
-    static int count = 0;
-    if(num+count<=x_cor.size()){
+
+    if(num+frameCount<=x_cor.size()){
         QVector<double> x(num), y(num); // initialize with entries 0..100
         for (int i=0; i<num; ++i)
         {
-          x[i] = x_cor[i+count];
-          y[i] = y_cor[i+count];
+          x[i] = x_cor[i+frameCount];
+          y[i] = y_cor[i+frameCount];
         }
 
-        count+=num;
+        frameCount+=num;
 
         ui->customPlot->graph(0)->setData(x, y);
         ui->customPlot->replot();
@@ -46,6 +47,8 @@ void plotFile::makePlot(){
     }
     else{
         qDebug()<<"File Ended";
+        stopPlotting =1;
+        QMessageBox::information(this,"Plot info","Finished plotting the file");
     }
 
 
@@ -64,14 +67,23 @@ void plotFile::on_plotButton_clicked()
         this->statusBar()->showMessage("Select a file first!!!");
     }
     else{
-        makePlot();
+
+        do{
+            stopPlotting = 0;
+            makePlot();
+        }
+        while(ui->plotCheckBox->isChecked() && !stopPlotting);
+
+
     }
 
 }
 
 void plotFile::on_clearButton_clicked()
 {
+    stopPlotting =1;
     clearPlot();
+    frameCount =0;
 }
 
 void plotFile::initFile(){
