@@ -59,7 +59,13 @@ void plotFile::clearPlot(){
     ui->customPlot->replot();
     ui->customPlot->update();
 }
+void plotFile::delay(int n)
+{
+    QTime dieTime= QTime::currentTime().addMSecs(n);
 
+    while (QTime::currentTime() < dieTime)
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+}
 void plotFile::on_plotButton_clicked()
 {
 
@@ -71,6 +77,7 @@ void plotFile::on_plotButton_clicked()
         do{
             stopPlotting = 0;
             makePlot();
+            delay(ui->delaySpinBox->value());
         }
         while(ui->plotCheckBox->isChecked() && !stopPlotting);
 

@@ -20,6 +20,7 @@ public slots:
     void clearPlot();
     void makePlot();
     void initFile();
+    void delay(int n);
 private slots:
     void on_plotButton_clicked();
 
