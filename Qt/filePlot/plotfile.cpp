@@ -2,6 +2,8 @@
 #include "ui_plotfile.h"
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QFile>
+#include <QTextStream>
 
 plotFile::plotFile(QWidget *parent)
     : QMainWindow(parent)
@@ -25,19 +27,28 @@ plotFile::~plotFile()
 }
 
 void plotFile::makePlot(){
-    // generate some data:
-    QVector<double> x(101), y(101); // initialize with entries 0..100
-    for (int i=0; i<101; ++i)
-    {
-      x[i] = i/50.0 - 1; // x goes from -1 to 1
-      y[i] = x[i]*x[i]; // let's plot a quadratic function
-    }
-    // create graph and assign data to it:
 
-    ui->customPlot->graph(0)->setData(x, y);
-    ui->customPlot->xAxis->setRange(-1, 1);
-    ui->customPlot->yAxis->setRange(0, 1);
-    ui->customPlot->replot();
+    int num = 761;
+    static int count = 0;
+    if(num+count<=x_cor.size()){
+        QVector<double> x(num), y(num); // initialize with entries 0..100
+        for (int i=0; i<num; ++i)
+        {
+          x[i] = x_cor[i+count];
+          y[i] = y_cor[i+count];
+        }
+
+        count+=num;
+
+        ui->customPlot->graph(0)->setData(x, y);
+        ui->customPlot->replot();
+        ui->customPlot->update();
+    }
+    else{
+        qDebug()<<"File Ended";
+    }
+
+
 }
 
 void plotFile::clearPlot(){
@@ -59,6 +70,23 @@ void plotFile::on_clearButton_clicked()
 
 void plotFile::initFile(){
 
+    QFile file(fileName);
+    if(!file.open(QFile::ReadOnly)){
+        QMessageBox::warning(this,"Error File Open","Not able to open the file");
+    }
+    QTextStream in(&file);
+
+    double x,y;
+    while(true){
+        if(in.atEnd()){
+            break;
+        }
+
+        in>>x>>y;
+        x_cor.append(x);
+        y_cor.append(y);
+    }
+//    qDebug()<<x_cor.size();
 }
 void plotFile::on_fileOpenButton_clicked()
 {
@@ -72,4 +100,5 @@ void plotFile::on_fileOpenButton_clicked()
 
 //    QMessageBox::information(this,tr("File Name"),fileName);
     ui->fileTextEdit->setText(fileName);
+    initFile();
 }

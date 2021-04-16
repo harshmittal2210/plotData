@@ -2,6 +2,7 @@
 #define PLOTFILE_H
 
 #include <QMainWindow>
+#include <QVector>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class plotFile; }
@@ -29,5 +30,6 @@ private slots:
 private:
     Ui::plotFile *ui;
     QString fileName;
+    QVector<double> x_cor,y_cor;
 };
 #endif // PLOTFILE_H
