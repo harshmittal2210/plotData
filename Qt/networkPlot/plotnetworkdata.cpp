@@ -6,6 +6,15 @@ plotNetworkData::plotNetworkData(QWidget *parent)
     , ui(new Ui::plotNetworkData)
 {
     ui->setupUi(this);
+
+    ui->customPlot->addGraph();
+    ui->customPlot->graph(0)->setScatterStyle(QCPScatterStyle::ssCircle);
+    ui->customPlot->graph(0)->setLineStyle(QCPGraph::lsNone);
+    ui->customPlot->xAxis->setLabel("X");
+    ui->customPlot->yAxis->setLabel("Y");
+    ui->customPlot->xAxis->setRange(-6000, 100);
+    ui->customPlot->yAxis->setRange(-6000, 8000);
+    ui->customPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectPlottables);
 }
 
 plotNetworkData::~plotNetworkData()
@@ -108,4 +117,14 @@ void plotNetworkData::on_lineStyleComboBox_currentIndexChanged(int index)
     }
     ui->customPlot->replot();
     ui->customPlot->update();
+}
+
+void plotNetworkData::on_plotButton_clicked()
+{
+
+}
+
+void plotNetworkData::on_clearButton_clicked()
+{
+
 }

@@ -15,6 +15,15 @@ public:
     plotNetworkData(QWidget *parent = nullptr);
     ~plotNetworkData();
 
+private slots:
+    void on_plotTypeComboBox_currentIndexChanged(int index);
+
+    void on_lineStyleComboBox_currentIndexChanged(int index);
+
+    void on_plotButton_clicked();
+
+    void on_clearButton_clicked();
+
 private:
     Ui::plotNetworkData *ui;
 };
