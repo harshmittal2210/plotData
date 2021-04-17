@@ -1,6 +1,8 @@
 #include "plotnetworkdata.h"
 #include "ui_plotnetworkdata.h"
 
+#include <QTcpSocket>
+
 plotNetworkData::plotNetworkData(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::plotNetworkData)
