@@ -230,8 +230,13 @@
       <height>22</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
     <property name="currentText">
-     <string>Circle</string>
+     <string>None</string>
     </property>
     <item>
      <property name="text">
@@ -331,6 +336,69 @@
     <property name="text">
      <string>Scatter Style</string>
     </property>
+   </widget>
+   <widget class="QLabel" name="lineLabel">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>390</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Line Style</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="lineStyleComboBox">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>410</y>
+      <width>211</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <item>
+     <property name="text">
+      <string>None</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Line</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Step Left</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Step Right</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Step Center</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Impulse</string>
+     </property>
+    </item>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

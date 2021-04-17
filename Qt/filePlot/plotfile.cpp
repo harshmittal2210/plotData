@@ -194,3 +194,34 @@ void plotFile::on_plotTypeComboBox_currentIndexChanged(int index)
     ui->customPlot->replot();
     ui->customPlot->update();
 }
+
+void plotFile::on_lineStyleComboBox_currentIndexChanged(int index)
+{
+
+    switch (index) {
+        case 0:
+                ui->customPlot->graph(0)->setLineStyle(QCPGraph::lsNone);
+                break;
+        case 1:
+                ui->customPlot->graph(0)->setLineStyle(QCPGraph::lsLine);
+                break;
+        case 2:
+                ui->customPlot->graph(0)->setLineStyle(QCPGraph::lsStepLeft);
+                break;
+        case 3:
+                ui->customPlot->graph(0)->setLineStyle(QCPGraph::lsStepRight);
+                break;
+        case 4:
+                ui->customPlot->graph(0)->setLineStyle(QCPGraph::lsStepCenter);
+                break;
+        case 5:
+                ui->customPlot->graph(0)->setLineStyle(QCPGraph::lsImpulse);
+                break;
+        default:
+                ui->customPlot->graph(0)->setLineStyle(QCPGraph::lsNone);
+                break;
+
+    }
+    ui->customPlot->replot();
+    ui->customPlot->update();
+}

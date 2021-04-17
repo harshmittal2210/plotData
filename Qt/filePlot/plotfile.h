@@ -32,6 +32,8 @@ private slots:
 
     void on_plotTypeComboBox_currentIndexChanged(int index);
 
+    void on_lineStyleComboBox_currentIndexChanged(int index);
+
 private:
     Ui::plotFile *ui;
     QString fileName;
