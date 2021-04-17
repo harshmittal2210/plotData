@@ -221,6 +221,117 @@
      <string>Delay (ms)</string>
     </property>
    </widget>
+   <widget class="QComboBox" name="plotTypeComboBox">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>350</y>
+      <width>211</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="currentText">
+     <string>Circle</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>None</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Dot</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Cross</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Plus</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Circle</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Disc</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Square</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Diamond</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Star</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Triangle</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Triangle Inverted</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Cross Square</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Plus Square</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Cross Circle</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Plus Circle</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Peace</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLabel" name="plotLabel">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>320</y>
+      <width>91</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Scatter Style</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

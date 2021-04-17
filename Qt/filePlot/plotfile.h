@@ -28,6 +28,10 @@ private slots:
 
     void on_fileOpenButton_clicked();
 
+
+
+    void on_plotTypeComboBox_currentIndexChanged(int index);
+
 private:
     Ui::plotFile *ui;
     QString fileName;
