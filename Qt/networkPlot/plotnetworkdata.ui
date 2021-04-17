@@ -78,12 +78,12 @@
      <string>Close</string>
     </property>
    </widget>
-   <widget class="QLabel" name="fileLable">
+   <widget class="QLabel" name="IPLable">
     <property name="geometry">
      <rect>
       <x>870</x>
       <y>30</y>
-      <width>55</width>
+      <width>31</width>
       <height>16</height>
      </rect>
     </property>
@@ -93,28 +93,10 @@
      </font>
     </property>
     <property name="text">
-     <string>File:</string>
+     <string>IP:</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="fileTextEdit">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>910</x>
-      <y>30</y>
-      <width>341</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>9</pointsize>
-     </font>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="fileOpenButton">
+   <widget class="QPushButton" name="connectButton">
     <property name="geometry">
      <rect>
       <x>1030</x>
@@ -129,7 +111,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Open File</string>
+     <string>Connect</string>
     </property>
    </widget>
    <widget class="QLabel" name="windowSizeLabel">
@@ -236,7 +218,7 @@
      </font>
     </property>
     <property name="currentText">
-     <string>Circle</string>
+     <string>None</string>
     </property>
     <item>
      <property name="text">
@@ -399,6 +381,60 @@
       <string>Impulse</string>
      </property>
     </item>
+   </widget>
+   <widget class="QLineEdit" name="ipAddressEdit">
+    <property name="geometry">
+     <rect>
+      <x>900</x>
+      <y>30</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="inputMask">
+     <string>000.000.000.000</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>1080</x>
+      <y>30</y>
+      <width>55</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Port</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>1120</x>
+      <y>30</y>
+      <width>113</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="inputMask">
+     <string>00000</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
