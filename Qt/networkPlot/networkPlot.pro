@@ -10,15 +10,15 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    TCPSocket.cpp \
     main.cpp \
     plotnetworkdata.cpp \
-    qcustomplot.cpp \
-    socket.cpp
+    qcustomplot.cpp
 
 HEADERS += \
+    TCPSocket.h \
     plotnetworkdata.h \
-    qcustomplot.h \
-    socket.h
+    qcustomplot.h
 
 FORMS += \
     plotnetworkdata.ui

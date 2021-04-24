@@ -1,5 +1,6 @@
 #include "plotnetworkdata.h"
 #include "ui_plotnetworkdata.h"
+#include "TCPSocket.h"
 
 #include <QTcpSocket>
 
@@ -11,12 +12,17 @@ plotNetworkData::plotNetworkData(QWidget *parent)
 
     ui->customPlot->addGraph();
     ui->customPlot->graph(0)->setScatterStyle(QCPScatterStyle::ssCircle);
-    ui->customPlot->graph(0)->setLineStyle(QCPGraph::lsNone);
+    ui->customPlot->graph(0)->setLineStyle(QCPGraph::lsLine);
     ui->customPlot->xAxis->setLabel("X");
     ui->customPlot->yAxis->setLabel("Y");
     ui->customPlot->xAxis->setRange(-6000, 100);
     ui->customPlot->yAxis->setRange(-6000, 8000);
     ui->customPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectPlottables);
+
+    ui->plotTypeComboBox->setCurrentIndex(4);
+    ui->lineStyleComboBox->setCurrentIndex(1);
+
+    stopPlotting=0;
 }
 
 plotNetworkData::~plotNetworkData()
@@ -121,12 +127,51 @@ void plotNetworkData::on_lineStyleComboBox_currentIndexChanged(int index)
     ui->customPlot->update();
 }
 
-void plotNetworkData::on_plotButton_clicked()
-{
-
+void plotNetworkData::plotData(){
+    ui->customPlot->graph(0)->setData(tcpConnection.xCorr, tcpConnection.yCorr);
+    ui->customPlot->rescaleAxes();
+    ui->customPlot->replot();
+    ui->customPlot->update();
 }
 
+void plotNetworkData::on_plotButton_clicked()
+{
+    if(ui->plotCheckBox->isChecked()){
+        tcpConnection.getDataStream();
+
+        while(!stopPlotting){
+            tcpConnection.readData();
+            plotData();
+            tcpConnection.ClearVar();
+        }
+    }
+    else{
+        tcpConnection.getSinglePacket();
+        tcpConnection.readData();
+        plotData();
+        tcpConnection.ClearVar();
+    }
+
+}
+void plotNetworkData::clearPlot(){
+    ui->customPlot->graph(0)->data()->clear();
+    ui->customPlot->replot();
+    ui->customPlot->update();
+}
 void plotNetworkData::on_clearButton_clicked()
 {
+    clearPlot();
+    stopPlotting = 1;
+    tcpConnection.stopData();
+}
 
+void plotNetworkData::on_connectButton_clicked()
+{
+    tcpConnection.Connect();
+//    tcpConnection.Close();
+}
+
+void plotNetworkData::on_disconnectButton_clicked()
+{
+    tcpConnection.Close();
 }

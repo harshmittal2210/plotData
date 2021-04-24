@@ -2,6 +2,7 @@
 #define PLOTNETWORKDATA_H
 
 #include <QMainWindow>
+#include "TCPSocket.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class plotNetworkData; }
@@ -15,6 +16,8 @@ public:
     plotNetworkData(QWidget *parent = nullptr);
     ~plotNetworkData();
 
+    void clearPlot();
+    void plotData();
 private slots:
     void on_plotTypeComboBox_currentIndexChanged(int index);
 
@@ -24,7 +27,13 @@ private slots:
 
     void on_clearButton_clicked();
 
+    void on_connectButton_clicked();
+
+    void on_disconnectButton_clicked();
+
 private:
     Ui::plotNetworkData *ui;
+    TCPSocket tcpConnection;
+    bool stopPlotting;
 };
 #endif // PLOTNETWORKDATA_H
