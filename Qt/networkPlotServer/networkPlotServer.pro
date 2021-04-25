@@ -13,20 +13,22 @@ INCLUDEPATH += include/
 VPATH += src/
 SOURCES += \
     main.cpp \
+    src/mythread.cpp \
     src/plotnetworkdata.cpp \
     src/qcustomplot.cpp
 
 HEADERS += \
+    include/mythread.h \
     include/plotnetworkdata.h \
     include/qcustomplot.h
 
 FORMS += \
     ui/plotnetworkdata.ui
 
-MOC_DIR     = ./build/moc
-OBJECTS_DIR = ./build/obj
-RCC_DIR     = ./build/qrc
-UI_DIR      = ./build/uic
+#MOC_DIR     = ./build/moc
+#OBJECTS_DIR = ./build/obj
+#RCC_DIR     = ./build/qrc
+#UI_DIR      = ./build/uic
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
