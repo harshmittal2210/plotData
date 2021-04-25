@@ -46,7 +46,7 @@ void MyThread::readyRead()
     // will write on server side window
     qDebug() << socketDescriptor << " Data in: " << Data;
 
-    socket->write(Data);
+    socket->write("Hello Client!",13);
 }
 
 void MyThread::disconnected()
