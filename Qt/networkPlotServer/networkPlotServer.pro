@@ -13,11 +13,13 @@ INCLUDEPATH += include/
 VPATH += src/
 SOURCES += \
     main.cpp \
+    src/myserver.cpp \
     src/mythread.cpp \
     src/plotnetworkdata.cpp \
     src/qcustomplot.cpp
 
 HEADERS += \
+    include/myserver.h \
     include/mythread.h \
     include/plotnetworkdata.h \
     include/qcustomplot.h
