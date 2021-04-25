@@ -76,6 +76,8 @@ void plotNetworkData::on_connectButton_clicked()
     QString port = ui->portLineEdit->text();
     qDebug()<<"IP:"<<ip<<" port:"<<port;
     tcpConnection.Connect(ip.toLatin1().data(),port.toInt());
+    ui->statusCheckBox->setChecked(1);
+    ui->statusCheckBox->setText("Connected");
 //    tcpConnection.Close();
 }
 
@@ -83,6 +85,8 @@ void plotNetworkData::on_disconnectButton_clicked()
 {
     tcpConnection.stopData();
     tcpConnection.Close();
+    ui->statusCheckBox->setChecked(0);
+    ui->statusCheckBox->setText("Not Connected");
 }
 
 
