@@ -6,6 +6,20 @@ plotNetworkData::plotNetworkData(QWidget *parent)
     , ui(new Ui::plotNetworkData)
 {
     ui->setupUi(this);
+
+    ui->customPlot->addGraph();
+    ui->customPlot->graph(0)->setScatterStyle(QCPScatterStyle::ssCircle);
+    ui->customPlot->graph(0)->setLineStyle(QCPGraph::lsLine);
+    ui->customPlot->xAxis->setLabel("X");
+    ui->customPlot->yAxis->setLabel("Y");
+    ui->customPlot->xAxis->setRange(-6000, 100);
+    ui->customPlot->yAxis->setRange(-6000, 8000);
+    ui->customPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectPlottables);
+
+    ui->plotTypeComboBox->setCurrentIndex(4);
+    ui->lineStyleComboBox->setCurrentIndex(1);
+    ui->ipAddressEdit->setText("192.168.56.1");
+    ui->portLineEdit->setText("65040");
 }
 
 plotNetworkData::~plotNetworkData()
