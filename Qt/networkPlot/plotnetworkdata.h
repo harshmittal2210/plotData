@@ -18,6 +18,7 @@ public:
 
     void clearPlot();
     void plotData();
+
 private slots:
     void on_plotTypeComboBox_currentIndexChanged(int index);
 
@@ -35,5 +36,6 @@ private:
     Ui::plotNetworkData *ui;
     TCPSocket tcpConnection;
     bool stopPlotting;
+
 };
 #endif // PLOTNETWORKDATA_H

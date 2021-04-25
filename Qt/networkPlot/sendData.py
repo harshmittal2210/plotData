@@ -41,7 +41,11 @@ while True:
 		
 		data = conn.recv(1024)
 		# print('Server received', repr(data))
-		dataJson = json.loads(data.decode('utf-8'))
+		try:
+			dataJson = json.loads(data.decode('utf-8'))
+		except Exception as e:
+			continue
+		
 		print(dataJson)
 		if dataJson[0]["Send_Data"]==1:
 			send_data(conn)
@@ -54,4 +58,3 @@ while True:
 			conn.close()
 			break
 	conn.close()
-		

@@ -34,6 +34,7 @@ void TCPSocket::sendData(QJsonObject data){
 
 }
 void TCPSocket::readData(){
+    qDebug()<< "Waiting to read Data";
     sock->waitForReadyRead(3000);
     QString str =  sock->readAll();
     QJsonParseError parseError;

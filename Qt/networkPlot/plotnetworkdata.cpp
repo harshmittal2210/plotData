@@ -3,6 +3,9 @@
 #include "TCPSocket.h"
 
 #include <QTcpSocket>
+#include <QThread>
+#include<thread>
+
 
 plotNetworkData::plotNetworkData(QWidget *parent)
     : QMainWindow(parent)
@@ -28,6 +31,54 @@ plotNetworkData::plotNetworkData(QWidget *parent)
 plotNetworkData::~plotNetworkData()
 {
     delete ui;
+}
+
+
+void plotNetworkData::plotData(){
+    ui->customPlot->graph(0)->setData(tcpConnection.xCorr, tcpConnection.yCorr);
+    ui->customPlot->rescaleAxes();
+    ui->customPlot->replot();
+    ui->customPlot->update();
+}
+
+
+void plotNetworkData::on_plotButton_clicked()
+{
+    if(ui->plotCheckBox->isChecked()){
+        tcpConnection.getDataStream();
+
+    }
+    else{
+        tcpConnection.getSinglePacket();
+        tcpConnection.readData();
+        plotData();
+        tcpConnection.ClearVar();
+    }
+
+}
+void plotNetworkData::clearPlot(){
+    ui->customPlot->graph(0)->data()->clear();
+    ui->customPlot->replot();
+    ui->customPlot->update();
+}
+void plotNetworkData::on_clearButton_clicked()
+{
+    clearPlot();
+    stopPlotting = 1;
+
+//    tcpThread->Stop = 1;
+}
+
+void plotNetworkData::on_connectButton_clicked()
+{
+    tcpConnection.Connect();
+//    tcpConnection.Close();
+}
+
+void plotNetworkData::on_disconnectButton_clicked()
+{
+    tcpConnection.stopData();
+    tcpConnection.Close();
 }
 
 
@@ -125,53 +176,4 @@ void plotNetworkData::on_lineStyleComboBox_currentIndexChanged(int index)
     }
     ui->customPlot->replot();
     ui->customPlot->update();
-}
-
-void plotNetworkData::plotData(){
-    ui->customPlot->graph(0)->setData(tcpConnection.xCorr, tcpConnection.yCorr);
-    ui->customPlot->rescaleAxes();
-    ui->customPlot->replot();
-    ui->customPlot->update();
-}
-
-void plotNetworkData::on_plotButton_clicked()
-{
-    if(ui->plotCheckBox->isChecked()){
-        tcpConnection.getDataStream();
-
-        while(!stopPlotting){
-            tcpConnection.readData();
-            plotData();
-            tcpConnection.ClearVar();
-        }
-    }
-    else{
-        tcpConnection.getSinglePacket();
-        tcpConnection.readData();
-        plotData();
-        tcpConnection.ClearVar();
-    }
-
-}
-void plotNetworkData::clearPlot(){
-    ui->customPlot->graph(0)->data()->clear();
-    ui->customPlot->replot();
-    ui->customPlot->update();
-}
-void plotNetworkData::on_clearButton_clicked()
-{
-    clearPlot();
-    stopPlotting = 1;
-    tcpConnection.stopData();
-}
-
-void plotNetworkData::on_connectButton_clicked()
-{
-    tcpConnection.Connect();
-//    tcpConnection.Close();
-}
-
-void plotNetworkData::on_disconnectButton_clicked()
-{
-    tcpConnection.Close();
 }

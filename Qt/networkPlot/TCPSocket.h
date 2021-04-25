@@ -5,6 +5,7 @@
 #include <QtNetwork>
 #include <QTcpSocket>
 #include <QDebug>
+#include <QThread>
 
 class TCPSocket : public QObject
 {
@@ -16,12 +17,17 @@ public:
     void sendData(QJsonObject data);
 
     void getSinglePacket();
-    void readData();
+
 
     QVector<double> xCorr,yCorr;
-    void ClearVar();
+
     void getDataStream();
     void stopData();
+
+public slots:
+    void readData();
+    void ClearVar();
+
 private:
     QTcpSocket *sock;
 };
