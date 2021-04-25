@@ -19,7 +19,7 @@ plotNetworkData::plotNetworkData(QWidget *parent)
     ui->plotTypeComboBox->setCurrentIndex(4);
     ui->lineStyleComboBox->setCurrentIndex(1);
     ui->ipAddressEdit->setText("192.168.56.1");
-    ui->portLineEdit->setText("65040");
+    ui->portLineEdit->setText("1234");
 }
 
 plotNetworkData::~plotNetworkData()

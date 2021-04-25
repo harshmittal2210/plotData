@@ -383,6 +383,9 @@
     </item>
    </widget>
    <widget class="QLineEdit" name="ipAddressEdit">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>900</x>
@@ -419,6 +422,9 @@
     </property>
    </widget>
    <widget class="QLineEdit" name="portLineEdit">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>1120</x>
