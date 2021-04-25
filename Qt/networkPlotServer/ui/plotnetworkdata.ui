@@ -96,7 +96,7 @@
      <string>IP:</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="connectButton">
+   <widget class="QPushButton" name="startServerButton">
     <property name="geometry">
      <rect>
       <x>900</x>
@@ -111,7 +111,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Connect</string>
+     <string>Start</string>
     </property>
    </widget>
    <widget class="QLabel" name="windowSizeLabel">
@@ -436,7 +436,7 @@
      <string>00000</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="disconnectButton">
+   <widget class="QPushButton" name="stopServerButton">
     <property name="geometry">
      <rect>
       <x>1020</x>
@@ -451,7 +451,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Disconnect</string>
+     <string>Stop</string>
     </property>
    </widget>
    <widget class="QLabel" name="statusLabel">
