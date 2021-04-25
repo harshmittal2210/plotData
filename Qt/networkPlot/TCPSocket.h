@@ -12,7 +12,7 @@ class TCPSocket : public QObject
     Q_OBJECT
 public:
     explicit TCPSocket(QObject *parent = nullptr);
-    void Connect();
+    void Connect(char* ip, int port);
     void Close();
     void sendData(QJsonObject data);
 

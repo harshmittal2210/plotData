@@ -56,10 +56,11 @@ void TCPSocket::readData(){
         }
     }
 }
-void TCPSocket::Connect()
+void TCPSocket::Connect(char* ip, int port)
 {
     sock = new QTcpSocket(this);
-    sock->connectToHost("192.168.56.1",65040);
+//    sock->connectToHost("192.168.56.1",65040);
+    sock->connectToHost(ip,port);
 
     if(sock->waitForConnected(3000)){
         qDebug()<<"Connected!!";

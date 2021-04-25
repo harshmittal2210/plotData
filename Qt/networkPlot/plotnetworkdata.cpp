@@ -24,7 +24,8 @@ plotNetworkData::plotNetworkData(QWidget *parent)
 
     ui->plotTypeComboBox->setCurrentIndex(4);
     ui->lineStyleComboBox->setCurrentIndex(1);
-
+    ui->ipAddressEdit->setText("192.168.56.1");
+    ui->portLineEdit->setText("65040");
     stopPlotting=0;
 }
 
@@ -71,7 +72,10 @@ void plotNetworkData::on_clearButton_clicked()
 
 void plotNetworkData::on_connectButton_clicked()
 {
-    tcpConnection.Connect();
+    QString ip = ui->ipAddressEdit->text();
+    QString port = ui->portLineEdit->text();
+    qDebug()<<"IP:"<<ip<<" port:"<<port;
+    tcpConnection.Connect(ip.toLatin1().data(),port.toInt());
 //    tcpConnection.Close();
 }
 
