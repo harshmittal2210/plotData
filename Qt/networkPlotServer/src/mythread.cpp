@@ -45,8 +45,8 @@ void MyThread::readyRead()
 
     // will write on server side window
     qDebug() << socketDescriptor << " Data in: " << Data;
-
-    socket->write("Hello Client!",13);
+    parseMsg(Data);
+//    socket->write("Hello Client!",13);
 }
 
 void MyThread::disconnected()
@@ -56,4 +56,31 @@ void MyThread::disconnected()
 
     socket->deleteLater();
     exit(0);
+}
+
+void MyThread::parseMsg(QByteArray Data){
+    QJsonParseError parseError;
+    QJsonDocument jsonResponse = QJsonDocument::fromJson(Data, &parseError);
+
+    if(parseError.error != QJsonParseError::NoError)
+    {
+        qDebug() << "Parse error: " << parseError.errorString();
+        return;
+    }
+
+    QJsonArray jsonArray = jsonResponse.array();
+
+    xCorr.clear();
+    yCorr.clear();
+    if(!jsonArray.isEmpty()){
+        QJsonObject jsonObject = jsonArray.first().toObject();
+//        qDebug()<< jsonObject.value("X").toArray()[0].toDouble();
+//        QArrayData X = jsonObject.value("X").toArray();
+        for(int i=0;i<jsonObject.value("X").toArray().size();i++){
+            xCorr.push_back(jsonObject.value("X").toArray()[i].toDouble());
+            yCorr.push_back(jsonObject.value("Y").toArray()[i].toDouble());
+        }
+
+        qDebug()<<xCorr;
+    }
 }

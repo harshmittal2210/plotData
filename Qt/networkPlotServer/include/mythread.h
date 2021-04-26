@@ -1,8 +1,7 @@
 #ifndef MYTHREAD_H
 #define MYTHREAD_H
 
-#include <QThread>
-
+#include <QtNetwork>
 #include <QThread>
 #include <QTcpSocket>
 #include <QDebug>
@@ -25,6 +24,8 @@ public slots:
 private:
     QTcpSocket *socket;
     qintptr socketDescriptor;
+    QVector<double> xCorr,yCorr;
+    void parseMsg(QByteArray Data);
 };
 
 #endif // MYTHREAD_H
