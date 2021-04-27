@@ -36,7 +36,11 @@ plotNetworkData::~plotNetworkData()
 
 void plotNetworkData::plotNewValues(QVector<double> x, QVector<double> y)
 {
-    qDebug()<< "Got data x:"<<x<<" y:"<<y;
+//    qDebug()<< "Got data x:"<<x<<" y:"<<y;
+    ui->customPlot->graph(0)->setData(x, y);
+    ui->customPlot->rescaleAxes();
+    ui->customPlot->replot();
+    ui->customPlot->update();
 }
 
 void plotNetworkData::on_plotTypeComboBox_currentIndexChanged(int index)
