@@ -1,4 +1,4 @@
-#include "../include/plotnetworkdata.h"
+#include "plotnetworkdata.h"
 #include "ui_plotnetworkdata.h"
 
 plotNetworkData::plotNetworkData(QWidget *parent)
@@ -20,6 +20,13 @@ plotNetworkData::plotNetworkData(QWidget *parent)
     ui->lineStyleComboBox->setCurrentIndex(1);
     ui->ipAddressEdit->setText("192.168.56.1");
     ui->portLineEdit->setText("1234");
+
+
+//    MyThread m;
+//    connect(&MyThread,SIGNAL(newDataRecieved(QVector<double> x,QVector<double> y)),this,SLOT(plotNewValues(QVector<double> x,QVector<double> y)));
+    ServerThread *thread = new ServerThread(this);
+    connect(thread,SIGNAL(newDataRecieved(QVector<double> ,QVector<double> )),this,SLOT(plotNewValues(QVector<double> ,QVector<double> )));
+    thread->start();
 }
 
 plotNetworkData::~plotNetworkData()
@@ -27,6 +34,10 @@ plotNetworkData::~plotNetworkData()
     delete ui;
 }
 
+void plotNetworkData::plotNewValues(QVector<double> x, QVector<double> y)
+{
+    qDebug()<< "Got data x:"<<x<<" y:"<<y;
+}
 
 void plotNetworkData::on_plotTypeComboBox_currentIndexChanged(int index)
 {
@@ -123,3 +134,5 @@ void plotNetworkData::on_lineStyleComboBox_currentIndexChanged(int index)
     ui->customPlot->replot();
     ui->customPlot->update();
 }
+
+

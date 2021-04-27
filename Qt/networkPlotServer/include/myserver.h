@@ -11,7 +11,7 @@ public:
     explicit MyServer(QObject *parent = 0);
     void startServer();
 signals:
-
+    void newDataRecieved(QVector<double> ,QVector<double> );
 public slots:
 
 protected:

@@ -16,13 +16,15 @@ SOURCES += \
     src/myserver.cpp \
     src/mythread.cpp \
     src/plotnetworkdata.cpp \
-    src/qcustomplot.cpp
+    src/qcustomplot.cpp \
+    src/serverthread.cpp
 
 HEADERS += \
     include/myserver.h \
     include/mythread.h \
     include/plotnetworkdata.h \
-    include/qcustomplot.h
+    include/qcustomplot.h \
+    include/serverthread.h
 
 FORMS += \
     ui/plotnetworkdata.ui

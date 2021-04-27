@@ -1,15 +1,14 @@
 #include "plotnetworkdata.h"
 
 #include <QApplication>
-#include "myserver.h"
+#include <QVector>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    qRegisterMetaType<QVector<double>>();
     plotNetworkData w;
     w.show();
-    // Make a server and starts it
-    MyServer server;
-    server.startServer();
+
     return a.exec();
 }

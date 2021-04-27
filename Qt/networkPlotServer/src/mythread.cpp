@@ -81,6 +81,8 @@ void MyThread::parseMsg(QByteArray Data){
             yCorr.push_back(jsonObject.value("Y").toArray()[i].toDouble());
         }
 
-        qDebug()<<xCorr;
+//        qDebug()<<xCorr;
     }
+    // emit signal
+    emit newDataRecieved(xCorr,yCorr);
 }

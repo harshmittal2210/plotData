@@ -16,6 +16,7 @@ public:
 
 signals:
     void error(QTcpSocket::SocketError socketerror);
+    void newDataRecieved(QVector<double> ,QVector<double> );
 
 public slots:
     void readyRead();

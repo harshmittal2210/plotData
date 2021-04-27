@@ -32,6 +32,6 @@ void MyServer::incomingConnection(qintptr socketDescriptor)
     // connect signal/slot
     // once a thread is not needed, it will be beleted later
     connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
-
+    connect(thread,SIGNAL(newDataRecieved(QVector<double>,QVector<double>)),this,SIGNAL(newDataRecieved(QVector<double>,QVector<double>)));
     thread->start();
 }

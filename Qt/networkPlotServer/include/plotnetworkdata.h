@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 #include "qcustomplot.h"
+#include "mythread.h"
+#include "myserver.h"
+#include "serverthread.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class plotNetworkData; }
@@ -23,5 +26,8 @@ private slots:
 
 private:
     Ui::plotNetworkData *ui;
+
+public slots:
+    void plotNewValues(QVector<double> x,QVector<double> y);
 };
 #endif // PLOTNETWORKDATA_H
