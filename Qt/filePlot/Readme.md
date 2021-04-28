@@ -12,4 +12,4 @@ x2 y2
 .
 .
 ```
-![Qt Application](img/fileData.JPG)
+![Qt Application](../../img/fileData.JPG)
